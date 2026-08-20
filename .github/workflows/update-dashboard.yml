@@ -1,0 +1,64 @@
+name: Update REITs Dashboard
+
+on:
+  schedule:
+    # Every day at 16:00 Beijing Time (08:00 UTC)
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/config.json'
+      - 'scripts/generate_dashboard.py'
+      - 'templates/dashboard.html'
+
+permissions:
+  contents: write
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests 2>/dev/null || true
+
+      - name: Generate dashboard
+        run: |
+          cd ${{ github.workspace }}
+          python3 scripts/generate_dashboard.py \
+            --config data/config.json \
+            --template templates/dashboard.html \
+            --output reits-dashboard.html
+
+      - name: Check for changes
+        id: changes
+        run: |
+          cd ${{ github.workspace }}
+          if git diff --quiet reits-dashboard.html; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          cd ${{ github.workspace }}
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reits-dashboard.html
+          git commit -m "chore: update REITs dashboard $(date '+%Y-%m-%d %H:%M')"
+          git push
+
+      - name: Skip (no changes)
+        if: steps.changes.outputs.changed == 'false'
+        run: echo "No changes detected, skipping commit."

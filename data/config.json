@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "description": "REITs manual data — dividend yields, signal rules, notes",
+    "last_updated": "2026-08-20",
+    "risk_free_rate": 2.15,
+    "risk_free_rate_note": "10Y中国国债收益率基准",
+    "buy_threshold_premium": 5.0,
+    "buy_threshold_spread": 2.0,
+    "hold_threshold_premium": 15.0,
+    "warn_threshold_premium": 25.0
+  },
+  "reits": {
+    "sh508050": {
+      "name": "华夏中核清洁能源",
+      "sector": "水电",
+      "tier": "stable",
+      "dividend_yield": 4.0,
+      "dividend_source": "招募书预测",
+      "note": "水电现金流最稳，零燃料成本波动"
+    },
+    "sz180401": {
+      "name": "鹏华深圳能源",
+      "sector": "燃气热电",
+      "tier": "stable",
+      "dividend_yield": 6.8,
+      "dividend_source": "招募书8.0%/现价估算",
+      "note": "电价联动抗通胀，燃气成本波动需关注"
+    },
+    "sh508016": {
+      "name": "华夏华电清洁能源",
+      "sector": "燃气热电",
+      "tier": "stable",
+      "dividend_yield": 5.0,
+      "dividend_source": "最新季报",
+      "note": "PB最低，估值合理"
+    },
+    "sh508018": {
+      "name": "华夏中国交建",
+      "sector": "多高速",
+      "tier": "stable",
+      "dividend_yield": 4.5,
+      "dividend_source": "最新季报",
+      "note": "折价21%，多高速分散"
+    },
+    "sh508030": {
+      "name": "中航中核汇能新能源",
+      "sector": "跨区域风光",
+      "tier": "flexible",
+      "dividend_yield": 6.8,
+      "dividend_source": "招募书预测",
+      "note": "跨区域分散，52周分位偏高"
+    },
+    "sh508096": {
+      "name": "中航京能国际能源",
+      "sector": "跨区域风光",
+      "tier": "flexible",
+      "dividend_yield": 6.8,
+      "dividend_source": "招募书预测",
+      "note": "近乎平价，52周低位31%。注意PB=0.32是底层评估折扣≠基金PB"
+    },
+    "sh508028": {
+      "name": "中信建投国家电投新能源",
+      "sector": "海上风电",
+      "tier": "volatile",
+      "dividend_yield": 5.0,
+      "dividend_source": "最新季报",
+      "note": "溢价14%偏高，高利率压制明显"
+    },
+    "sh508059": {
+      "name": "华泰三峡新能源",
+      "sector": "海上风电",
+      "tier": "volatile",
+      "dividend_yield": 4.5,
+      "dividend_source": "最新季报",
+      "note": "近乎平价，利差偏薄"
+    },
+    "sh508007": {
+      "name": "中金山东高速",
+      "sector": "单高速",
+      "tier": "volatile",
+      "dividend_yield": 5.5,
+      "dividend_source": "最新季报",
+      "note": "溢价34%极高，单一场地集中风险"
+    }
+  }
+}
